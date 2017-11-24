@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Template</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue Template</h1>
+    <hr>
+    <div id="app">{{message}}</div>
+    <template id="temtwo">
+            <h2 style="color:red;fontSize:150%;">This is template tab model</h2>
+    </template>
+
+    <script type="x-template" id="temthree">
+            <h2 style="color:pink;fontSize:150%;">This is template script model</h2>
+    </script>
+    <script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            message:'Hello World'
+        },
+        // template:`<h2 style="color:green;fontSize:150%;">This is select template</h2>`
+        // template:"#temtwo"
+        template:'#temthree'
+    });
+    </script>
+</body>
+</html>

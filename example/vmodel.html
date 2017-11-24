@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>V-model Demo</title>
+</head>
+
+<body>
+    <h1>V-model Demo</h1>
+    <hr>
+    <div id="app">
+        <p>原始数据信息：{{message}}</p>
+        <p>v-model
+            <input type="text" v-model="message">
+        </p>
+        <p>v-model.lazy
+            <input type="text" v-model.lazy="message">
+        </p>
+        <p>v-model.number
+            <input type="text" v-model.number="message">
+        </p>
+        <p>v-model.trim
+            <input type="text" v-model.trim="message">
+        </p>
+        <hr>
+        <h3>文本域</h3>
+        <textarea v-model="message" cols="30" rows="10"></textarea>
+        <hr>
+        <h3>多选框绑定一个值</h3>
+        <input type="checkbox" v-model="isTrue" id="mycheckbox">
+        <label for="mycheckbox">{{isTrue}}</label>
+        <hr>
+        <h3>多选框绑定数组</h3>
+        <p>
+            <input type="checkbox" v-model="web_names" id="jscheckbox1" value="Tom">
+            <label for="jscheckbox">Tom</label>
+            <input type="checkbox" v-model="web_names" id="jscheckbox2" value="Jerry">
+            <label for="jscheckbox">Jerry</label>
+            <input type="checkbox" v-model="web_names" id="jscheckbox3" value="Jack">
+            <label for="jscheckbox">Jack</label>
+        </p>
+        <p v-for="name in web_names">{{name}}</p>
+        <hr>
+        <h3>单选框的绑定</h3>
+        <input type="radio" v-model="sex" value="Male" id="one">
+        <label for="one">Male</label>
+        <input type="radio" v-model="sex" value="Female" id="two">
+        <label for="two">Female</label>
+        <p>You Select label is : {{sex}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World!',
+                isTrue: true,
+                web_names: [],
+                sex:'Male'
+            }
+        });
+        function sortNumber(a, b) {
+            return a - b;
+        }
+    </script>
+</body>
+
+</html>

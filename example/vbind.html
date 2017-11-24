@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>V-bind Demo</title>
+</head>
+<body>
+    <h1>V-bind Demo</h1>
+    <hr>
+    <div id="app">
+        <img v-bind:src="imgsrc" :alt="descripation">
+        <a :href="webUrl" target="_blank">Vue.js</a>
+        <hr>
+        <div id="clsdiv1" :class="className">v-bind class demo</div>
+        <div id="clsdiv2" :class="{mycolorred:isOK}">v-bind class Judge</div>
+        <div id="clsdiv3" :class="[mycolorgreen,myfontsizeone]">v-bind class Array</div>
+        <div id="clsdiv4" :class="isOK?mycolorgreen:myfontsizeone">v-bind class Ternary operations</div>
+        <hr>
+        <div>
+            <input type="checkbox" v-model="isOK" id="mycheckbox">
+            <label for="mycheckbox">isOk={{isOK}}</label>
+        </div>
+        <hr>
+        <div :style="{color:red,fontSize:font}">Vue Bind Style</div>
+        <div :style="styleObject">Vue Bind Style Object</div>
+    </div>
+    <!-- css style -->
+    <style>
+        .mycolorred {
+            color: red;
+        }
+    
+        .mycolorgreen {
+            color: green;
+        }
+    
+        .myfontsizeone {
+            font-size: 150%;
+        }
+    </style>
+    <!-- JavaScript -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World!',
+                imgsrc: 'https://cn.vuejs.org/images/logo.png',
+                descripation: 'This is a Vue.js image!',
+                webUrl: 'https://cn.vuejs.org/index.html',
+                className: 'mycolorred',
+                isOK:false,
+                mycolorred:'mycolorred',
+                mycolorgreen:'mycolorgreen',
+                myfontsizeone:'myfontsizeone',
+                red:'red',
+                font:'20px',
+                styleObject:{
+                    color:'green',
+                    fontSize:'24px'
+                }
+            }
+        });
+        function sortNumber(a, b) {
+            return a - b;
+        }
+    </script>
+</body>
+</html>
