@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Component3</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue Component3</h1>
+    <hr>
+    <div id="app">
+        <panda from-here="SiChuan"></panda>
+    </div>
+
+    <script>
+        var city = {
+            template: `<div style="color:green;fontSize:200%">SiChuan of {{country}}</div>`,
+            props: ['country']
+        };
+        var panda = {
+            template: `<div>
+                    <h1>Panda From {{fromHere}}</h1>
+                    <city country="China"></city>
+                </div>`,
+            props: ['fromHere'],
+            components: {
+                "city": city
+            }
+        };
+
+        var app = new Vue({
+            el: '#app',
+            components: {
+                "panda": panda
+            }
+        });
+    </script>
+</body>
+</html>
