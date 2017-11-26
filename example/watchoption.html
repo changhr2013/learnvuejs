@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watch Option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Watch Option</h1>
+    <hr>
+    <div id="app">
+
+        <p>今日温度：{{temprature}}°C</p>
+        <p>穿衣建议：{{chaunyi}}</p>
+        <p><button @click='addtemprature'>升高温度</button>
+        <button @click='minustemprature'>降低温度</button></p>
+    </div>
+
+
+    <script>
+        var chuanyiArr=['T恤短袖','夹克长裙','棉衣羽绒服'];
+
+        var app=new Vue({
+            el:'#app',
+            data:{
+                temprature:14,
+                chaunyi:'夹克长裙'
+            },
+            methods:{
+                addtemprature:function(){
+                    return this.temprature+=5;
+                },
+                minustemprature:function(){
+                    return this.temprature-=5;
+                }
+            },
+            // watch:{
+            //     temprature:function(newval,oldval){
+            //         if(newval>=26){
+            //             this.chaunyi=chuanyiArr[0];
+            //         }else if(newval<26&&newval>0){
+            //             this.chaunyi=chuanyiArr[1];
+            //         }else{
+            //             this.chaunyi=chuanyiArr[2];
+            //         }
+            //     }
+            // }
+        });
+
+            app.$watch('temprature', function (newval, oldval) {
+                if (newval >= 26) {
+                    this.chaunyi = chuanyiArr[0];
+                } else if (newval < 26 && newval > 0) {
+                    this.chaunyi = chuanyiArr[1];
+                } else {
+                    this.chaunyi = chuanyiArr[2];
+                }
+            });
+    </script>
+</body>
+</html>
